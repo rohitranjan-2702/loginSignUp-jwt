@@ -12,4 +12,6 @@ router.post('/tutorSignup', authController.tutor_signup_post);
 router.get('/login', authController.login_get);
 router.post('/login', authController.tutor_login_post);
 
+router.post('/logout', authController.logout_get);
+
 module.exports = router;

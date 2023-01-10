@@ -8,5 +8,16 @@
 <body>
   <nav>
     <h1><a href="/">QStack</a></h1>
+
+    <ul>
+      <% if(user) { %>
+        <li>Welcome, <%= user.email %></li>
+        <li><a href="/logout" class="btn">Log Out</a></li>
+        <li><a href=""></a></li>
+        <% } else { %>
+        <li><a href="/login" class="btn">Log In</a></li>
+        <li><a href=""></a></li>
+        <% } %>
+    </ul>
   </nav>
   

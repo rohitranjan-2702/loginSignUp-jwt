@@ -64,6 +64,7 @@ module.exports.tutor_signup_post = async (req, res) => {
         const errors = handleErrors(err);
         res.status(400).json({ errors})
    }
+   res.redirect('/');
 }
 
 // Learner
@@ -95,4 +96,10 @@ module.exports.tutor_login_post = async (req, res) => {
         const errors = handleErrors(err);
         res.status(400).json({ errors });
     }
+}
+
+module.exports.logout_get = (req, res) => {
+    res.cookie('jwt', '', {maxAge: 1});
+    // replacing the token with empty string with 1ms expire tie
+    res.redirect('/');
 }
