@@ -1,0 +1,81 @@
+<%- include('partials/header'); -%>
+
+
+<form>
+    <h2>TUTOR Sign Up</h2>
+
+    <label for="fname">First Name</label>
+    <input type="text" name="fname" required>
+
+    <label for="lname">Last Name</label>
+    <input type="text" name="lname" required>
+    
+    <label for="about">About</label>
+    <input type="text" name="about" required>
+
+    <label for="age">Age</label>
+    <input type="number" name="age" required>
+
+    <label for="email">Email</label>
+    <input type="text" name="email" required>
+    <div class="email error"></div>
+
+    <label for="email">Password</label>
+    <input type="password" name="password" required>
+    <div class="password error"></div>
+
+    <label for="techstack">Techstack</label>
+    <input type="text" name="techstack" required>
+    <div class="techstack error"></div>
+
+    <button>SignUp as a TUTOR</button>
+</form>
+
+<script>
+    const form = document.querySelector('form');
+    const emailError = document.querySelector('.email.error');
+    const passwordError = document.querySelector('.password.error');
+    const techstackError = document.querySelector('.techstack.error');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // emailError.textContent = "";
+        // passwordError.textContent = "";
+        // techstackError.textContent = "";
+
+        
+        const email = form.email.value;
+        const password = form.password.value;
+        const techstack = form.techstack.value;
+
+        try{
+          const res = await fetch('/tutorSignup', {
+            method: 'POST',
+            body: JSON.stringify({ email, password, techstack }),
+            headers: {
+              'Content-Type': 'application/json'}
+          });
+          const data = await res.json();
+          console.log(data);
+          if (data.errors){
+            emailError.textContent = data.errors.email;
+            passwordError.textContent = data.errors.password;
+            techstackError.textContent = data.errors.techstack;
+          }
+
+          if(data.user){
+            location.assign('/smoothies');
+          }
+        }  
+
+        catch (err){
+            console.log(err);
+        }
+        alert("Success!");
+    })
+
+    
+</script>
+
+<%- include('partials/footer'); -%>
