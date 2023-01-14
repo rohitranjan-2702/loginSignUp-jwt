@@ -5,19 +5,26 @@
 <div class="card">
   <div class="cover-photo">
       <!-- <img src="https://ui-avatars.com/api/?name=James+Carson&background=random&color=000&bold=true&format=svg" class="profile"> -->
-      <img src="https://ui-avatars.com/api/?name=James+Carson&background=random&color=000&bold=true&format=svg" class="profile">
+      <img src="https://ui-avatars.com/api/?name=Q+Stack&background=random&color=000&bold=true&format=svg" class="profile">
   </div>
-  <h3 class="profile-name">James Carson</h3>
-  <p class="about">Lorem ipsum dolor sit amet. <br>
-      UI/UX Designer <br> Front End Developer</p>
+  <h3 class="profile-name">Tutor Profile</h3>
+  <p class="about">
+      UI/UX Designer <br> 
+      Front End Developer
+    </p>
+    <p class="email">Email: <%= user.email %></p>
+    <p class="tech">Techstack: <%= user.techstack %></p>
   <button class="btn">Message</button>
   <button class="btn">Following</button>
+  
   <div class="icons">
       <i class="fa-brands fa-linkedin  "></i>
       <i class="fa-brands fa-github"></i>
       <i class="fa-brands fa-youtube"></i> 
       <i class="fa-brands fa-twitter"></i>
   </div>
+
+  <p class="time">Created at <%= user.created_at %></p>
 </div>
 
 <%- include('partials/footer'); -%>

@@ -51,11 +51,11 @@ module.exports.login_get = (req, res) => {
 
 // tutor
 module.exports.tutor_signup_post = async (req, res) => {
-   const { email, password, techstack } = req.body;
+   const { email, password, techstack, about } = req.body;
 
    try {
       const tutor = await Tutor.create({
-        email, password, techstack });
+        email, password, techstack, about });
       const token = createToken(tutor._id);
       res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge*1000 });
       res.status(201).json({tutor: tutor._id});  
@@ -102,4 +102,13 @@ module.exports.logout_get = (req, res) => {
     res.cookie('jwt', '', {maxAge: 1});
     // replacing the token with empty string with 1ms expire tie
     res.redirect('/');
+}
+
+module.exports.tutor_profile_get = async (req, res) => {
+    try{
+        const tutor = await Tutor.find();
+        res.status(200).send(tutor);
+    } catch(err){
+        res.status(400).send(err.message);
+    }
 }

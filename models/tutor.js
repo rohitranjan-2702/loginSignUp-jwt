@@ -3,6 +3,9 @@ const { isEmail} = require("validator");
 const bcrypt= require("bcrypt");
 
 const tutorSchema = new mongoose.Schema({
+    firstName: {type: String,},
+    lastName: {type: String,},
+    age:{type: Number},
     email: {
         type: String,
         required: [true, 'Please enter an email address'],
@@ -20,6 +23,7 @@ const tutorSchema = new mongoose.Schema({
     created_at: { type: Date },
     updated_at: { type: Date },
     techstack: {type: String, uppercase: true},
+    about: {type: String}
 });
 
 // fire a function before doc saved todb

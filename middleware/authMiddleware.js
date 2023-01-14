@@ -32,7 +32,7 @@ const checkUser = (req, res, next) => {
                 console.log(err.message);
                 res.locals.user = null;
             } else {
-                console.log(decodedToken);
+                console.log(decodedToken); // gives the jwt object
                 let user = await tutor.findById(decodedToken.id);
                 res.locals.user = user;
                 next();

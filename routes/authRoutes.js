@@ -14,4 +14,6 @@ router.post('/login', authController.tutor_login_post);
 
 router.post('/logout', authController.logout_get);
 
+router.get('/profile', authController.tutor_profile_get);
+
 module.exports = router;
