@@ -65,7 +65,7 @@
           }
 
           if(data.user){
-            location.assign('/smoothies');
+            location.assign('/profile');
           }
         }  
 
@@ -73,6 +73,7 @@
             console.log(err);
         }
         alert("Success!");
+        window.location.replace("http://localhost:3000/profile")
     })
 
     

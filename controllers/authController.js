@@ -1,6 +1,8 @@
 const Tutor = require('../models/tutor');
 const Learner = require('../models/learner');
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
+
+require('dotenv').config();
 
 // handle errors
 const handleErrors = (err) => {
@@ -33,7 +35,7 @@ if(err.message.includes('user validation failed')) {
 
 const maxAge = 3*24*60*60;
 const createToken = (id) => {
-    return jwt.sign({id}, 'maja nahi arha hai', {
+    return jwt.sign({id}, process.env.JWT_SECRET, {
         expiresIn: maxAge
     });
 }
@@ -64,7 +66,7 @@ module.exports.tutor_signup_post = async (req, res) => {
         const errors = handleErrors(err);
         res.status(400).json({ errors})
    }
-   res.redirect('/');
+//    res.redirect('/');
 }
 
 // Learner
